@@ -35,3 +35,17 @@ int main() {
             printf(" - 1 | 1 -> 1\n");
             resultado = a | b;
             break;
+         case 3:
+            printf("Operacion: XOR (^)\n");
+            printf("Tabla de verdad (para cada bit):\n");
+            printf("  - 0 ^ 0 -> 0\n");
+            printf("  - 0 ^ 1 -> 1\n");
+            printf("  - 1 ^ 0 -> 1\n");
+            printf("  - 1 ^ 1 -> 0\n");
+            resultado = a ^ b;
+            break;
+
+        default:
+            printf("Error: La opcion '%d' no es valida.\n", operacion);
+            return 1;
+    }
