@@ -15,3 +15,23 @@ int main() {
     scanf("%d", &operacion);
 
     printf("\n");
+       switch (operacion) {
+        case 1:
+            printf("Operacion: AND (&)\n");
+            printf("Tabla de verdad (para cada bit):\n");
+            printf(" - 0 & 0 -> 0\n");
+            printf(" - 0 & 1 -> 0\n");
+            printf(" - 1 & 0 -> 0\n");
+            printf(" - 1 & 1 -> 1\n");
+            resultado = a & b;
+            break;
+
+        case 2:
+            printf("Operacion: OR (|)\n");
+            printf("Tabla de verdad (para cada bit):\n");
+            printf(" - 0 | 0 -> 0\n");
+            printf(" - 0 | 1 -> 1\n");
+            printf(" - 1 | 0 -> 1\n");
+            printf(" - 1 | 1 -> 1\n");
+            resultado = a | b;
+            break;
