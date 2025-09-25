@@ -1,12 +1,14 @@
 int main() {
     int a, b, operacion, resultado;
 
+* // --- ENTRADA DE DATOS ---
     printf("Ingresa el primer valor entero (a): ");
     scanf("%d", &a);
 
     printf("Ingresa el segundo valor entero (b): ");
-    scanf("%d", &b);
+    scanf("%d", &b); * // Un espacio para que se vea más ordenado
 
+ * // --- SELECCIONAR OPERACIÓN ---
     printf("\nEscoge una operacion a nivel de bits:\n");
     printf("1. AND (&)\n");
     printf("2. OR (|)\n");
@@ -49,3 +51,9 @@ int main() {
             printf("Error: La opcion '%d' no es valida.\n", operacion);
             return 1;
     }
+ printf("\n----------------------------------\n");
+    printf("El resultado es: %d\n", resultado);
+    printf("----------------------------------\n");
+
+    return 0;
+}
