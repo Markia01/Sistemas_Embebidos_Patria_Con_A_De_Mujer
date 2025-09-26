@@ -1,59 +1,65 @@
-int main() {
-    int a, b, operacion, resultado;
+#include <stdio.h>
 
-* // --- ENTRADA DE DATOS ---
-    printf("Ingresa el primer valor entero (a): ");
+int main() {
+    int a, b, operation, result;
+
+    // --- DATA INPUT ---
+    printf("Enter the first integer value (a): ");
     scanf("%d", &a);
 
-    printf("Ingresa el segundo valor entero (b): ");
-    scanf("%d", &b); * // Un espacio para que se vea más ordenado
+    printf("Enter the second integer value (b): ");
+    scanf("%d", &b);
 
- * // --- SELECCIONAR OPERACIÓN ---
-    printf("\nEscoge una operacion a nivel de bits:\n");
+    printf("\nChoose a bitwise operation:\n");
     printf("1. AND (&)\n");
     printf("2. OR (|)\n");
     printf("3. XOR (^)\n");
-    printf("Tu eleccion: ");
-    scanf("%d", &operacion);
+    printf("Your choice: ");
+    scanf("%d", &operation);
 
-    printf("\n");
-       switch (operacion) {
-        case 1:
-            printf("Operacion: AND (&)\n");
-            printf("Tabla de verdad (para cada bit):\n");
-            printf(" - 0 & 0 -> 0\n");
-            printf(" - 0 & 1 -> 0\n");
-            printf(" - 1 & 0 -> 0\n");
-            printf(" - 1 & 1 -> 1\n");
-            resultado = a & b;
+    printf("\n"); // A space for better readability
+
+    // --- SELECT OPERATION ---
+    switch (operation) {
+        case 1: // AND Operation
+            printf("Operation: AND (&)\n");
+            printf("Truth Table (for each bit):\n");
+            printf("  - 0 & 0 -> 0\n");
+            printf("  - 0 & 1 -> 0\n");
+            printf("  - 1 & 0 -> 0\n");
+            printf("  - 1 & 1 -> 1\n");
+            result = a & b; // Performs the bitwise AND operation
             break;
 
-        case 2:
-            printf("Operacion: OR (|)\n");
-            printf("Tabla de verdad (para cada bit):\n");
-            printf(" - 0 | 0 -> 0\n");
-            printf(" - 0 | 1 -> 1\n");
-            printf(" - 1 | 0 -> 1\n");
-            printf(" - 1 | 1 -> 1\n");
-            resultado = a | b;
+        case 2: // OR Operation
+            printf("Operation: OR (|)\n");
+            printf("Truth Table (for each bit):\n");
+            printf("  - 0 | 0 -> 0\n");
+            printf("  - 0 | 1 -> 1\n");
+            printf("  - 1 | 0 -> 1\n");
+            printf("  - 1 | 1 -> 1\n");
+            result = a | b; // Performs the bitwise OR operation
             break;
-         case 3:
-            printf("Operacion: XOR (^)\n");
-            printf("Tabla de verdad (para cada bit):\n");
+
+        case 3: // XOR Operation
+            printf("Operation: XOR (^)\n");
+            printf("Truth Table (for each bit):\n");
             printf("  - 0 ^ 0 -> 0\n");
             printf("  - 0 ^ 1 -> 1\n");
             printf("  - 1 ^ 0 -> 1\n");
             printf("  - 1 ^ 1 -> 0\n");
-            resultado = a ^ b;
+            result = a ^ b; // Performs the bitwise XOR operation
             break;
 
         default:
-            printf("Error: La opcion '%d' no es valida.\n", operacion);
-            return 1;
+            printf("Error: Option '%d' is not valid.\n", operation);
+            return 1; // Exits the program with an error code
     }
- printf("\n----------------------------------\n");
-    printf("El resultado es: %d\n", resultado);
+
+    // --- RESULT OUTPUT ---
+    printf("\n----------------------------------\n");
+    printf("The result is: %d\n", result);
     printf("----------------------------------\n");
 
-    return 0;
+    return 0; // The program finished successfully
 }
