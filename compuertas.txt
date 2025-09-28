@@ -21,6 +21,7 @@ int main() {
 
     // --- SELECT OPERATION ---
     switch (operation) {
+         // --- GATE AND ---
         case 1: // AND Operation
             printf("Operation: AND (&)\n");
             printf("Truth Table (for each bit):\n");
@@ -30,7 +31,7 @@ int main() {
             printf("  - 1 & 1 -> 1\n");
             result = a & b; // Performs the bitwise AND operation
             break;
-
+         // --- GATE OR ---
         case 2: // OR Operation
             printf("Operation: OR (|)\n");
             printf("Truth Table (for each bit):\n");
@@ -40,7 +41,7 @@ int main() {
             printf("  - 1 | 1 -> 1\n");
             result = a | b; // Performs the bitwise OR operation
             break;
-
+         // --- GATE XOR ---
         case 3: // XOR Operation
             printf("Operation: XOR (^)\n");
             printf("Truth Table (for each bit):\n");
@@ -50,7 +51,7 @@ int main() {
             printf("  - 1 ^ 1 -> 0\n");
             result = a ^ b; // Performs the bitwise XOR operation
             break;
-
+         // --- EXIT FOR INCORRECT ENTRY ---
         default:
             printf("Error: Option '%d' is not valid.\n", operation);
             return 1; // Exits the program with an error code
