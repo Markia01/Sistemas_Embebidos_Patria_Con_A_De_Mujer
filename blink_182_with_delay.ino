@@ -12,10 +12,10 @@ void setup()
 void loop()
 {
 
-  digitalWrite(13, HIGH);
-  delay(1000);
-  digitalWrite(13, LOW);
-  delay(1000);
+  digitalWrite(13, HIGH); //Allow the current flow to the pin to light the Led
+  delay(1000); //Determinates when going to turn on
+  digitalWrite(13, LOW); //Desactivate the current flow to switch-off the led
+  delay(1000); //Determinates when going to turn off
 
   digitalWrite(12, HIGH);
   delay(1000);
