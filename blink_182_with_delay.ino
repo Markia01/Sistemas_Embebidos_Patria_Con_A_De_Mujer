@@ -17,9 +17,9 @@ void loop()
   digitalWrite(13, LOW); //Desactivate the current flow to switch-off the led
   delay(1000); //Determinates when going to turn off
 
-  digitalWrite(12, HIGH);
-  delay(1000);
-  digitalWrite(12, LOW);
+  digitalWrite(12, HIGH);//Allow the power for the pin function to on the led
+  delay(1000);//Determinates when going to turn off
+  digitalWrite(12, LOW);//Desactivate the current flow to switch-off the led
   delay(1000);
 
   digitalWrite(11, HIGH);
