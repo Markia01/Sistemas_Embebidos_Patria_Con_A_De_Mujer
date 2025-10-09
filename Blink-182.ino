@@ -13,23 +13,19 @@ void setup()
 void loop()
 {
 
-  // Turn pin 13 ON.
   digitalWrite(13, HIGH);
-  // Immediately turn pin 13 OFF.
+
   digitalWrite(13, LOW);
 
-  // Turn pin 12 ON.
   digitalWrite(12, HIGH);
-  // Immediately turn pin 12 OFF.
+
   digitalWrite(12, LOW);
 
-  // Turn pin 11 ON.
   digitalWrite(11, HIGH);
-  // Immediately turn pin 11 OFF.
+
   digitalWrite(11, LOW);
 
-  // Turn pin 10 ON.
   digitalWrite(10, HIGH);
-  // Immediately turn pin 10 OFF.
+
   digitalWrite(10, LOW);
 }
