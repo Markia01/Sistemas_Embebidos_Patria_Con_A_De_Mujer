@@ -12,9 +12,10 @@ void setup() {
 
 void loop() {
   
-  digitalWrite(13, HIGH);  
-                  
-  digitalWrite(13, LOW);  
+  digitalWrite(13, HIGH);  //Allow the power for the pin function to on the led
+
+  digitalWrite(13, LOW); //Disactivate the power for the pin function to off the led
+
        
 
     digitalWrite(12, HIGH);  
@@ -33,3 +34,4 @@ void loop() {
  
 
 }
+
