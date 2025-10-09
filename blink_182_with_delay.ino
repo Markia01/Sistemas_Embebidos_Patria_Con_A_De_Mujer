@@ -1,3 +1,4 @@
+//the void is declared
 void setup()
 {
 
