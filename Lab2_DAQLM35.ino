@@ -16,7 +16,7 @@ void setup()
   pinMode(LED_AMARILLO_PIN, OUTPUT);
   pinMode(LED_ROJO_PIN, OUTPUT);
 
-  // Asegurarse que todos empiecen apagados
+  // Asegurar que todos comiencen apagados
   digitalWrite(LED_VERDE_PIN, LOW);
   digitalWrite(LED_AMARILLO_PIN, LOW);
   digitalWrite(LED_ROJO_PIN, LOW);
@@ -36,7 +36,7 @@ void loop()
   float voltaje = (promedio / 1023.0) * 5.0;
   float tempC = voltaje * 100.0;
 
-  // --- Imprimir todos los valores ---
+  // --- se imprimen todos los valores ---
   Serial.print("Valor Raw (promedio): ");
   Serial.print(promedio); // Este es el valor analógico (0-1023)
   Serial.print(" | Voltaje: ");
