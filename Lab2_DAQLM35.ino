@@ -20,3 +20,12 @@ void setup() {
   digitalWrite(LED_AMARILLO_PIN, LOW);
   digitalWrite(LED_ROJO_PIN, LOW);
 }
+void loop() {
+  
+  // --- Lectura y Cálculo de Temperatura ---
+  int totalLecturas = 0;
+  for (int i = 0; i < NUM_MUESTRAS; i++) {
+    totalLecturas += analogRead(SENSOR_PIN);
+    delay(2);
+  }
+}
