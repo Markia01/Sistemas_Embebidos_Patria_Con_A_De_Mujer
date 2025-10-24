@@ -44,7 +44,7 @@ void loop()
   Serial.print(" V | Temp: ");
   Serial.print(tempC);
   Serial.println(" C");
-}
+
 
 // --- Lógica de LEDs por Rango ---
   // Esta estructura asegura que solo un bloque de código se ejecute
@@ -63,3 +63,19 @@ void loop()
     digitalWrite(LED_ROJO_PIN, LOW);
     Serial.println("--- LED AMARILLO ---");
   }
+ // Rango Rojo (Más de 36.0 C)
+  else if (tempC > 36.0) {
+    digitalWrite(LED_VERDE_PIN, LOW);
+    digitalWrite(LED_AMARILLO_PIN, LOW);
+    digitalWrite(LED_ROJO_PIN, HIGH);
+    Serial.println("--- LED ROJO ---");
+  }
+  // Si no está en ningún rango (ej. menos de 15.0 C o entre 25.1 y 25.9)
+  else {
+    digitalWrite(LED_VERDE_PIN, LOW);
+    digitalWrite(LED_AMARILLO_PIN, LOW);
+    digitalWrite(LED_ROJO_PIN, LOW);
+  }
+
+ delay(1000);
+}
