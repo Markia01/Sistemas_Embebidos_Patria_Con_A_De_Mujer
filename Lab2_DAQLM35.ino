@@ -7,25 +7,41 @@ const int LED_ROJO_PIN = 9;
 // --- Configuración para el promedio ---
 const int NUM_MUESTRAS = 10;
 
-void setup() {
+void setup()
+{
   Serial.begin(9600);
-  
+
   // Configurar los tres LEDs como SALIDA
   pinMode(LED_VERDE_PIN, OUTPUT);
   pinMode(LED_AMARILLO_PIN, OUTPUT);
   pinMode(LED_ROJO_PIN, OUTPUT);
-  
+
   // Asegurarse que todos empiecen apagados
   digitalWrite(LED_VERDE_PIN, LOW);
   digitalWrite(LED_AMARILLO_PIN, LOW);
   digitalWrite(LED_ROJO_PIN, LOW);
 }
-void loop() {
-  
+void loop()
+{
+
   // --- Lectura y Cálculo de Temperatura ---
   int totalLecturas = 0;
-  for (int i = 0; i < NUM_MUESTRAS; i++) {
+  for (int i = 0; i < NUM_MUESTRAS; i++)
+  {
     totalLecturas += analogRead(SENSOR_PIN);
     delay(2);
   }
+
+  float promedio = (float)totalLecturas / (float)NUM_MUESTRAS;
+  float voltaje = (promedio / 1023.0) * 5.0;
+  float tempC = voltaje * 100.0;
+
+  // --- Imprimir todos los valores ---
+  Serial.print("Valor Raw (promedio): ");
+  Serial.print(promedio); // Este es el valor analógico (0-1023)
+  Serial.print(" | Voltaje: ");
+  Serial.print(voltaje, 3); // Muestra el voltaje con 3 decimales
+  Serial.print(" V | Temp: ");
+  Serial.print(tempC);
+  Serial.println(" C");
 }
