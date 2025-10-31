@@ -35,3 +35,15 @@ void setup() {
   // Serial.println("Modo inicial: Pull-Up (Presionar = 0)"); // COMENTADO para Plotter limpio
 }
 
+void loop() {
+  
+  //  Lógica del Botón de Modo (Pin 3) con Debounce
+  
+  int pinEstado = digitalRead(modeButtonPin); // Leer el botón de modo
+  
+  // Si la lectura es diferente a la anterior, reiniciar el contador
+  if (pinEstado != lastModeState) {
+    lastDebounceTime = millis();
+  }
+  
+}
