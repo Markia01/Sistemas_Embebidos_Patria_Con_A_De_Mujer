@@ -63,3 +63,44 @@ void loop() {
   }
   lastModeState = pinEstado; // Guardar la lectura en bruto para el próximo ciclo
 
+
+    // Lógica del Botón de Datos (Pin 2) y LED
+  
+  // Leemos el botón de datos. 
+  int sensor = digitalRead(dataButtonPin); 
+  int valorParaPlotter; 
+
+    if (estado == HIGH) {
+    // Modo Pull-Up (Press=0): El LED debe reflejar la señal cruda
+    valorParaPlotter = modoPullUp(sensor); 
+    Serial.println(valorParaPlotter); 
+  } else {
+    // Modo Pull-Down (Press=1): El LED debe reflejar la señal INVERTIDA
+    valorParaPlotter = pulldownLED(sensor); 
+    Serial.println(valorParaPlotter); 
+  }
+} // Fin del loop()
+
+
+/* Definición de Funciones
+  
+ El 'sensor' (Pin 2) entrega HIGH(1) en reposo y LOW(0) al presionar.
+*/
+
+/**
+ * Modo Pull-Up (Lógica NO-Invertida)
+ * El LED se comporta igual que el pin: Reposo(1) = ON, Presionado(0) = OFF
+ */
+int modoPullUp(int sensorVal) {
+  digitalWrite(ledPin, sensorVal);
+  return sensorVal;
+}
+
+/**
+ * Modo Pull-Down (Lógica Invertida)
+ * El LED se comporta al revés que el pin: Reposo(1) = OFF, Presionado(0) = ON
+ */
+int pulldownLED(int sensorVal) {
+  digitalWrite(ledPin, !sensorVal);
+  return !sensorVal; 
+}
