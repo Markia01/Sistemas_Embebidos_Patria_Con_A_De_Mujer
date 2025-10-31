@@ -47,3 +47,19 @@ void loop() {
   }
   
 }
+  // Si ha pasado suficiente tiempo desde el último cambio
+  if ((millis() - lastDebounceTime) > debounceDelay) {
+    
+    // Si el estado estable ha cambiado (es una nueva presión)
+    if (pinEstado != modeButtonState) {
+      modeButtonState = pinEstado; // Guardar el nuevo estado estable
+
+      // Si el nuevo estado estable es PRESIONADO (LOW)
+      if (modeButtonState == LOW) {
+        estado = !estado; // Invertir el modo
+        // Imprimir el nuevo modo en el Serial Monitor
+      }
+    }
+  }
+  lastModeState = pinEstado; // Guardar la lectura en bruto para el próximo ciclo
+
