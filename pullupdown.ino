@@ -22,3 +22,16 @@ int modeButtonState = HIGH;         // El estado estable actual del botón de mo
 int lastModeState = HIGH;           // La lectura en bruto anterior del botón de modo
 unsigned long lastDebounceTime = 0; // Última vez que cambió
 unsigned long debounceDelay = 50;   // 50ms de espera
+
+void setup() {
+  Serial.begin(9600);
+  
+  // Ambos botones usan la resistencia PULLUP interna
+  pinMode(dataButtonPin, INPUT_PULLUP); // Botón de Datos
+  pinMode(modeButtonPin, INPUT_PULLUP); // Botón de Modo
+  
+  pinMode(ledPin, OUTPUT); // Pin del LED
+  
+  // Serial.println("Modo inicial: Pull-Up (Presionar = 0)"); // COMENTADO para Plotter limpio
+}
+
