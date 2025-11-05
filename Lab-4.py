@@ -39,3 +39,24 @@ void setup() {
   Serial.println(F("Sensor DHT11 inicializado."));
   Serial.println(F("Presiona el boton para realizar una medicion..."));
 }
+
+void loop() {
+  // --- REQUISITO 1: Esperar al botón (Lógica de "Una Sola Medición") ---
+  
+  // 1. Leemos el estado actual del botón
+  int estadoActual = digitalRead(BOTON_PIN);
+
+  // 2. Comparamos el estado actual con el anterior
+  // ¿El botón ESTÁ presionado (LOW) y ANTES estaba suelto (HIGH)?
+  if (estadoActual == LOW && ultimoEstadoBoton == HIGH) {
+    
+    // ¡Sí! Es un nuevo "click". Realizamos UNA lectura.
+    Serial.println(F("--------------------------------"));
+    Serial.println(F("Boton presionado. Realizando lectura..."));
+    
+    realizarLectura(); // Llamamos a la función que mide y enciende LEDs
+    
+    // Pequeña pausa para el "debounce" (antirrebote)
+    // Esto evita que un solo "click" se registre varias veces.
+    delay(50); 
+  }
