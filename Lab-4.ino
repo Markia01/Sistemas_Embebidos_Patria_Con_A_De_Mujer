@@ -103,7 +103,7 @@ void realizarLectura()
   Serial.print(sensacionTermica);
   Serial.println(F("°C"));
 
-  // --- REQUISITO 4: Estructura de Control de LEDs ---
+  // --- REQUISITO 3: Estructura de Control de LEDs ---
 
   // 1. Primero, apagamos todos para empezar de cero
   digitalWrite(LED_VERDE_PIN, LOW);
