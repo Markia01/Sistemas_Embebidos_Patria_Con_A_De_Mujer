@@ -62,6 +62,7 @@ void loop() {
   }
 
   // 3. Actualizamos el estado "anterior" para la próxima vuelta del loop
+  
   ultimoEstadoBoton = estadoActual;
 
   // No se necesita delay aquí, el loop debe ser rápido
@@ -71,7 +72,7 @@ void loop() {
 
 /**
  * @brief Realiza una lectura del sensor, la imprime y controla los LEDs.
- */
+ **/
 void realizarLectura() {
   
   // Leemos los datos del sensor
@@ -84,3 +85,23 @@ void realizarLectura() {
     Serial.println(F("Asegura que la resistencia de PULL-UP (Req. 3) esté conectada."));
     return; // Salimos de la función si hay error
   }
+
+  // --- REQUISITO 2: Fórmula de Sensación Térmica ---
+  float sensacionTermica = dht.computeHeatIndex(temperatura, humedad, false);
+
+  // Imprimimos los valores
+  Serial.print(F("Humedad: "));
+  Serial.print(humedad);
+  Serial.print(F("%, Temperatura: "));
+  Serial.print(temperatura);
+  Serial.print(F("°C, "));
+  Serial.print(F("Sensacion Termica: "));
+  Serial.print(sensacionTermica);
+  Serial.println(F("°C"));
+
+  // --- REQUISITO 4: Estructura de Control de LEDs ---
+  
+  // 1. Primero, apagamos todos para empezar de cero
+  digitalWrite(LED_VERDE_PIN, LOW);
+  digitalWrite(LED_AMARILLO_PIN, LOW);
+  digitalWrite(LED_ROJO_PIN, LOW);
