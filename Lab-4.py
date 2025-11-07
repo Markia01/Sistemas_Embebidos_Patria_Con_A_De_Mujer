@@ -60,3 +60,27 @@ void loop() {
     // Esto evita que un solo "click" se registre varias veces.
     delay(50); 
   }
+
+  // 3. Actualizamos el estado "anterior" para la próxima vuelta del loop
+  ultimoEstadoBoton = estadoActual;
+
+  // No se necesita delay aquí, el loop debe ser rápido
+  // para detectar el "click" al instante.
+}
+
+
+/**
+ * @brief Realiza una lectura del sensor, la imprime y controla los LEDs.
+ */
+void realizarLectura() {
+  
+  // Leemos los datos del sensor
+  float humedad = dht.readHumidity();
+  float temperatura = dht.readTemperature(); 
+
+  // Verificamos si la lectura falló
+  if (isnan(humedad) || isnan(temperatura)) {
+    Serial.println(F("Error al leer del sensor DHT11!"));
+    Serial.println(F("Asegura que la resistencia de PULL-UP (Req. 3) esté conectada."));
+    return; // Salimos de la función si hay error
+  }
