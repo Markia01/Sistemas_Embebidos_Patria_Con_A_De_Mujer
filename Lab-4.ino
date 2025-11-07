@@ -109,3 +109,25 @@ void realizarLectura()
   digitalWrite(LED_VERDE_PIN, LOW);
   digitalWrite(LED_AMARILLO_PIN, LOW);
   digitalWrite(LED_ROJO_PIN, LOW);
+// 2. Evaluamos la temperatura y encendemos el LED correcto
+  if (temperatura >= 15.0 && temperatura <= 25.0) {
+    // "Si Temperatura esta entre 15°c y 25°c encender un led verde"
+    digitalWrite(LED_VERDE_PIN, HIGH);
+    Serial.println(F("Estado: CONFORTABLE (Verde)"));
+  } 
+  else if (temperatura >= 26.0 && temperatura <= 35.0) {
+    // "Si Temperatura esta entre 26 y 35 °c encender un led amarillo"
+    digitalWrite(LED_AMARILLO_PIN, HIGH);
+    Serial.println(F("Estado: CALIDO (Amarillo)"));
+  } 
+  else if (temperatura > 35.0) {
+    // "Si Temperatura es mayor a 35°c led Rojo"
+    digitalWrite(LED_ROJO_PIN, HIGH);
+    Serial.println(F("Estado: MUY CALIENTE (Rojo)"));
+  }
+  else {
+    // Si es menor a 15°C (o cualquier otro caso no cubierto)
+    Serial.println(F("Estado: Frio (Sin LED)"));
+    // Todos los LEDs ya están apagados
+  }
+}
