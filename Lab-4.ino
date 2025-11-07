@@ -1,9 +1,9 @@
 #include "DHT.h"
 
 // --- Definiciones de Pines ---
-#define DHTPIN 2          // Pin de datos del DHT11
-#define DHTTYPE DHT11     // Tipo de sensor
-#define BOTON_PIN 3       // Pin del botón de inicio
+#define DHTPIN 2      // Pin de datos del DHT11
+#define DHTTYPE DHT11 // Tipo de sensor
+#define BOTON_PIN 3   // Pin del botón de inicio
 #define LED_VERDE_PIN 7
 #define LED_AMARILLO_PIN 8
 #define LED_ROJO_PIN 9
@@ -15,7 +15,8 @@ DHT dht(DHTPIN, DHTTYPE);
 // Guardamos el estado anterior del botón para detectar CADA "click"
 int ultimoEstadoBoton = HIGH; // HIGH (suelto) por el INPUT_PULLUP
 
-void setup() {
+void setup()
+{
   Serial.begin(9600);
   Serial.println(F("Sistema de Monitoreo de Clima - ITIID"));
 
@@ -40,47 +41,50 @@ void setup() {
   Serial.println(F("Presiona el boton para realizar una medicion..."));
 }
 
-void loop() {
+void loop()
+{
   // --- REQUISITO 1: Esperar al botón (Lógica de "Una Sola Medición") ---
-  
+
   // 1. Leemos el estado actual del botón
   int estadoActual = digitalRead(BOTON_PIN);
 
   // 2. Comparamos el estado actual con el anterior
   // ¿El botón ESTÁ presionado (LOW) y ANTES estaba suelto (HIGH)?
-  if (estadoActual == LOW && ultimoEstadoBoton == HIGH) {
-    
+  if (estadoActual == LOW && ultimoEstadoBoton == HIGH)
+  {
+
     // ¡Sí! Es un nuevo "click". Realizamos UNA lectura.
     Serial.println(F("--------------------------------"));
     Serial.println(F("Boton presionado. Realizando lectura..."));
-    
+
     realizarLectura(); // Llamamos a la función que mide y enciende LEDs
-    
+
     // Pequeña pausa para el "debounce" (antirrebote)
     // Esto evita que un solo "click" se registre varias veces.
-    delay(50); 
+    delay(50);
   }
 
   // 3. Actualizamos el estado "anterior" para la próxima vuelta del loop
-  
+
   ultimoEstadoBoton = estadoActual;
 
   // No se necesita delay aquí, el loop debe ser rápido
   // para detectar el "click" al instante.
 }
 
-
 /**
  * @brief Realiza una lectura del sensor, la imprime y controla los LEDs.
  **/
-void realizarLectura() {
-  
+void realizarLectura()
+{
+
   // Leemos los datos del sensor
   float humedad = dht.readHumidity();
-  float temperatura = dht.readTemperature(); 
+  float temperatura = dht.readTemperature();
 
   // Verificamos si la lectura falló
-  if (isnan(humedad) || isnan(temperatura)) {
+  if (isnan(humedad) || isnan(temperatura))
+  {
     Serial.println(F("Error al leer del sensor DHT11!"));
     Serial.println(F("Asegura que la resistencia de PULL-UP (Req. 3) esté conectada."));
     return; // Salimos de la función si hay error
@@ -100,7 +104,7 @@ void realizarLectura() {
   Serial.println(F("°C"));
 
   // --- REQUISITO 4: Estructura de Control de LEDs ---
-  
+
   // 1. Primero, apagamos todos para empezar de cero
   digitalWrite(LED_VERDE_PIN, LOW);
   digitalWrite(LED_AMARILLO_PIN, LOW);
