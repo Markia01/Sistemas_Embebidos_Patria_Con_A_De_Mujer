@@ -29,3 +29,19 @@ void setup() {
     lcd.print("Error sensor!");
     return;
   }
+
+    // --- MOSTRAR EN PANTALLA ---
+  lcd.clear(); // Limpiar pantalla para evitar textos fantasma
+  
+  // Fila superior: Temperatura
+  lcd.setCursor(0, 0);
+  lcd.print("Temp: ");
+  lcd.print(t);
+  lcd.print(" C");
+
+  // Fila inferior: Humedad
+  lcd.setCursor(0, 1);
+  lcd.print("Humedad: ");
+  lcd.print(h);
+  lcd.print("%");
+}
