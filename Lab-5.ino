@@ -10,3 +10,11 @@ LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
 #define DHTTYPE DHT11 // Si tu sensor es BLANCO, cambia DHT11 por DHT22
 
 DHT dht(DHTPIN, DHTTYPE);
+
+void setup() {
+  lcd.begin(16, 2);
+  dht.begin(); // Iniciar el sensor
+
+  lcd.print("Iniciando...");
+  delay(2000); // Esperar 2 seg a que el sensor arranque bien
+}
