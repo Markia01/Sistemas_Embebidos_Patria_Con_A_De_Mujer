@@ -17,4 +17,15 @@ void setup() {
 
   lcd.print("Iniciando...");
   delay(2000); // Esperar 2 seg a que el sensor arranque bien
-}
+
+  // Leer humedad y temperatura
+  float h = dht.readHumidity();
+  float t = dht.readTemperature();
+
+  // Comprobar si hubo error en la lectura
+  if (isnan(h) || isnan(t)) {
+    lcd.clear();
+    lcd.setCursor(0, 0);
+    lcd.print("Error sensor!");
+    return;
+  }
